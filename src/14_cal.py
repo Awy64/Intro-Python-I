@@ -29,4 +29,19 @@ it should use today’s date to get the month and year.
 
 import sys
 import calendar
-from datetime import datetime
+from datetime import datetime, date
+
+cal = calendar.TextCalendar(firstweekday=6)
+d = date.today()
+def newcal(month=d.month, year=d.year):
+    cal.prmonth(year, month)
+
+
+
+if len(sys.argv) == 3:
+    newcal(int(sys.argv[1]), int(sys.argv[2]))
+elif len(sys.argv) == 2:
+    newcal(int(sys.argv[1]))
+else:
+    print('Please specify month and year 14_cal.py [month] [year]')
+    newcal()
